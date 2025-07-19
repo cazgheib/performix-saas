@@ -2,6 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv';
+import authRoutes from './routes/auth';
+import gymRoutes from './routes/gyms';
+import classRoutes from './routes/classes';
+import bookingRoutes from './routes/bookings';
+import workoutRoutes from './routes/workouts';
 
 dotenv.config();
 
@@ -16,6 +21,13 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', message: 'Performix Backend Server is running' });
 });
 
+app.use('/api/auth', authRoutes);
+app.use('/api/gyms', gymRoutes);
+app.use('/api/classes', classRoutes);
+app.use('/api/bookings', bookingRoutes);
+app.use('/api/workouts', workoutRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+  console.log(`Health check: http://localhost:${PORT}/health`);
 });
