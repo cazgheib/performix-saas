@@ -1,13 +1,30 @@
-import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { AuthProvider } from './context/AuthContext';
-import AppNavigator from './navigation/AppNavigator';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <AuthProvider>
-      <StatusBar style="light" />
-      <AppNavigator />
-    </AuthProvider>
+    <View style={styles.container}>
+      <Text style={styles.title}>Performix SaaS</Text>
+      <Text style={styles.subtitle}>Ready for development</Text>
+      <StatusBar style="auto" />
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 16,
+    color: '#666',
+  },
+});
